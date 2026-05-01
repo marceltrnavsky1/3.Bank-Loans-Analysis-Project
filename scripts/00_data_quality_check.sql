@@ -21,3 +21,11 @@ WHERE
 	OR LTRIM(RTRIM(loan_status)) = ''
 
 -- Numeric sanity Check
+SELECT *
+FROM financial_loan
+WHERE 
+	annual_income <=0
+	OR dti <0
+	OR installment <=0
+	OR int_rate <0 OR int_rate >1
+	OR loan_amount <=0
