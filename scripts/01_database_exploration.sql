@@ -5,6 +5,7 @@ SELECT
     TABLE_NAME, 
     TABLE_TYPE
 FROM INFORMATION_SCHEMA.TABLES;
+-- NOTE: We have only one Table
 
 -- Retrieve all columns for a table
 SELECT 
