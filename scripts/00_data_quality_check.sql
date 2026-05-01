@@ -70,6 +70,6 @@ data quality filtering.
 Example:
 SELECT *
 FROM financial_loan
-WHERE issue_date > last_payment_date; =>(15 463 rows)
+WHERE issue_date > last_payment_date; =>(15 453 rows)
 ===============================================================================
 */
