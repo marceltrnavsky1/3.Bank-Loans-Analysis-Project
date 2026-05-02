@@ -146,3 +146,14 @@ SELECT
  SUM(total_payment) AS Bad_Loan_Received_Amount
  FROM financial_loan
  WHERE loan_status ='Charged Off'
+
+ -- Loan Status Grid View =====================================================================
+SELECT
+	loan_status,
+	COUNT(id) AS Total_Loan_Applications,
+	SUM(loan_amount) AS Total_Funded_Amount,
+	SUM(total_payment) AS Total_Amount_Received,
+	AVG(int_rate)*100.0 AS Avg_Interest_Rate,
+	AVG(dti)*100.0 AS Avg_DTI
+FROM financial_loan
+GROUP BY loan_status
