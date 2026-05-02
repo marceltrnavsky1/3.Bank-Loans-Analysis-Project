@@ -89,5 +89,35 @@ WHERE MONTH(issue_date) = 12 AND YEAR(issue_date) = 2021
 -- PMTD Average DTI
 SELECT
 	ROUND(AVG(dti), 4)*100 AS PMTD_average_DTI_ratio
+
 FROM financial_loan
 WHERE MONTH(issue_date) = 11 AND YEAR(issue_date) = 2021
+
+
+-- Good Loan v Bad Loan KPI’s  ==================================================================
+/* GOOD LOANS */
+--1. Good Loan Application Percentage
+SELECT
+	(COUNT(CASE WHEN loan_status ='Fully Paid' OR loan_status ='Current'
+	THEN id END)*100)
+	/ COUNT(id) AS Good_Loan_Percentage
+FROM financial_loan
+
+--2. Good Loan Applications
+SELECT
+	COUNT(id) AS Good_Loan_Applications
+FROM financial_loan
+WHERE loan_status ='Fully Paid' OR loan_status ='Current'
+
+--3. Good Loan Funded Amount
+SELECT
+	SUM(loan_amount) AS Good_Loan_Funded_Amount
+FROM financial_loan
+WHERE loan_status='Fully Paid' OR loan_status ='Current'
+
+--4. Good Loan Total Received Amount
+SELECT
+	SUM(total_payment) AS Good_Loan_Total_Received_Amount
+FROM financial_loan
+WHERE loan_status='Fully Paid' OR loan_status ='Current'
+/* BAD LOANS */
