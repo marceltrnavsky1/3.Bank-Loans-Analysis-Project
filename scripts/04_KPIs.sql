@@ -95,7 +95,7 @@ WHERE MONTH(issue_date) = 11 AND YEAR(issue_date) = 2021
 
 
 -- Good Loan v Bad Loan KPI’s  ==================================================================
-/* GOOD LOANS */
+/* ============================= GOOD LOANS =====================================================*/
 --1. Good Loan Application Percentage
 SELECT
 	(COUNT(CASE WHEN loan_status ='Fully Paid' OR loan_status ='Current'
@@ -120,4 +120,29 @@ SELECT
 	SUM(total_payment) AS Good_Loan_Total_Received_Amount
 FROM financial_loan
 WHERE loan_status='Fully Paid' OR loan_status ='Current'
-/* BAD LOANS */
+	
+/* ============================= BAD LOANS ======================================================= */
+--1. Bad Loan Application Percentage
+SELECT 
+	COUNT(CASE WHEN loan_status ='Charged Off' THEN id END)*100.0
+	/ COUNT(id)
+	AS Bad_Loan_Percentage
+FROM financial_loan
+
+--2. Bad Loan Applications
+SELECT 
+	COUNT(loan_status) AS Bad_Loan_Appliacations
+FROM financial_loan
+WHERE loan_status ='Charged Off'
+
+--3. Bad Loan Funded Amount
+SELECT
+	SUM(loan_amount) AS Bad_Loan_Funded_Amount
+FROM financial_loan
+WHERE loan_status ='Charged Off'
+
+--4. Bad Loan Received Amount
+SELECT
+ SUM(total_payment) AS Bad_Loan_Received_Amount
+ FROM financial_loan
+ WHERE loan_status ='Charged Off'
