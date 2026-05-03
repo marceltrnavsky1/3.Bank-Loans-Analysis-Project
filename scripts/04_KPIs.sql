@@ -96,6 +96,11 @@ WHERE MONTH(issue_date) = 11 AND YEAR(issue_date) = 2021
 
 -- Good Loan v Bad Loan KPI’s  ==================================================================
 /* ============================= GOOD LOANS =====================================================*/
+/*In order to gain a comprehensive overview of our lending operations and monitor the performance of loans, 
+we aim to create a grid view report categorized by 'Loan Status.’ By providing insights into metrics such as 'Total Loan Applications,' 
+'Total Funded Amount,' 'Total Amount Received,' 'Month-to-Date (MTD) Funded Amount,' 'MTD Amount Received,' 'Average Interest Rate,' 
+and 'Average Debt-to-Income Ratio (DTI),' this grid view will empower us to make data-driven decisions and assess the health of our loan portfolio. */
+
 --1. Good Loan Application Percentage
 SELECT
 	(COUNT(CASE WHEN loan_status ='Fully Paid' OR loan_status ='Current'
@@ -156,4 +161,12 @@ SELECT
 	AVG(int_rate)*100.0 AS Avg_Interest_Rate,
 	AVG(dti)*100.0 AS Avg_DTI
 FROM financial_loan
+GROUP BY loan_status
+
+SELECT
+	loan_status,
+	SUM(loan_amount) AS MTD_Funded_Amount,
+	SUM(total_payment) AS MTD_Amount_Received
+FROM financial_loan
+WHERE MONTH(issue_date)=12 AND YEAR(issue_date) = 2021
 GROUP BY loan_status
