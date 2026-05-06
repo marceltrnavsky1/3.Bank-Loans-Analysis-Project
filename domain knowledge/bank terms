@@ -1,9 +1,8 @@
-BANK LOAN REPORT
-DOMAIN KNOWLEDGE
+### BANK LOAN REPORT ###
+## DOMAIN KNOWLEDGE ##
 Bank loans are a crucial financial tool that enables individuals and businesses to achieve their goals and manage financial needs. 
 However, it's essential for borrowers to understand the terms, costs, and responsibilities associated with loans to make informed 
 financial decisions.
-
 Banks collect loan data through various channels and processes, including:
 Loan Applications: When individuals or businesses apply for loans, they submit detailed applications that include personal and 
 financial information. This data is collected electronically or in paper form.
@@ -20,4 +19,4 @@ Data from these portals is collected and stored for analysis.
 Third-party Data Sources: Some banks may use external data sources, such as income verification services, 
 to gather additional information about borrowers.
 
-Process of Granting a Loan
+## Process of Granting a Loan ##
